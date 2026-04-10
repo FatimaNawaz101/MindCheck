@@ -1,115 +1,128 @@
-<!--Admin report preview part by Nick Mesti-->
+<!-- Admin Report Preview - Nick Mesti -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCheck - Report Preview</title>
+
+    <!-- shared styles -->
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
 
+<!-- NAV BAR -->
 <nav>
     <a href="/" class="logo">MindCheck</a>
+
     <ul>
         <li><a href="/">User Dashboard</a></li>
         <li><a href="/resources">Resources</a></li>
         <li><a href="/appointments">Appointments</a></li>
         <li><a href="/admin/dashboard">Admin Dashboard</a></li>
     </ul>
+
     <span class="user">Hello, Wellness Coordinator</span>
 </nav>
 
 <div class="container">
 
-    <!-- Page heading -->
+    <!-- HEADER -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <div>
             <h1>Wellness Report Preview</h1>
-            <p class="subtitle">Preview of the generated administrative wellness report.</p>
+            <p class="subtitle">Preview of generated campus wellness report</p>
         </div>
-        <a href="/admin/dashboard" class="btn btn-outline">Back to Dashboard</a>
+
+        <a href="/admin/dashboard" class="btn btn-outline">Back</a>
     </div>
 
-    <!-- Report details -->
+    <!-- REPORT CONFIG -->
     <div class="card">
-        <h2>Report Details</h2>
-        <p class="text-muted mt-10">This is a prototype preview using aggregated demo data.</p>
+        <h2>Report Configuration</h2>
 
         <table style="margin-top: 10px;">
             <tr>
-                <th>Field</th>
+                <th>Setting</th>
                 <th>Value</th>
             </tr>
             <tr>
                 <td>Reporting Period</td>
-                <td>This Semester</td>
+                <td>{{ period }}</td>
             </tr>
             <tr>
                 <td>Report Type</td>
-                <td>Campus Wellness Summary</td>
+                <td>{{ report_type }}</td>
             </tr>
             <tr>
                 <td>Export Format</td>
-                <td>PDF</td>
-            </tr>
-            <tr>
-                <td>Generated On</td>
-                <td>March 2026</td>
+                <td>{{ format }}</td>
             </tr>
         </table>
     </div>
 
-    <!-- Summary stats -->
+    <!-- SUMMARY STATS -->
     <div class="two-col">
+
         <div class="stat-box">
             <div class="label">Average Campus Mood</div>
-            <div class="number">6.4</div>
-            <div class="note">Based on aggregated student check-ins</div>
+            <div class="number">{{ report.average_mood }}</div>
+            <div class="note">Based on aggregated check-ins</div>
         </div>
 
         <div class="stat-box">
             <div class="label">Active Students</div>
-            <div class="number">132</div>
-            <div class="note">Students active this reporting period</div>
+            <div class="number">{{ report.active_students }}</div>
+            <div class="note">Students engaged in system</div>
         </div>
+
     </div>
 
     <div class="two-col">
+
         <div class="stat-box">
             <div class="label">Mood Entries</div>
-            <div class="number">320</div>
-            <div class="note">Total submitted check-ins</div>
+            <div class="number">{{ report.check_ins }}</div>
+            <div class="note">Total submissions</div>
         </div>
 
         <div class="stat-box">
             <div class="label">Appointment Requests</div>
-            <div class="number">18</div>
-            <div class="note">Counseling requests during this period</div>
+            <div class="number">{{ report.appointment_requests }}</div>
+            <div class="note">Counseling demand</div>
         </div>
+
     </div>
 
-    <!-- Stress periods -->
+    <!-- STRESS PERIODS -->
     <div class="card">
         <h2>Peak Stress Periods</h2>
-        <ul style="padding-left: 20px; line-height: 1.8;">
-            <li>Midterm Week</li>
-            <li>Final Exam Period</li>
+
+        <ul style="padding-left: 20px; line-height: 1.8; margin-top: 10px;">
+            {% for period in report.stress_periods %}
+                <li>{{ period }}</li>
+            {% endfor %}
         </ul>
     </div>
 
-    <!-- Export button -->
+    <!-- EXPORT SECTION -->
     <div class="card text-center">
         <h2>Export Report</h2>
-        <p class="text-muted mt-10">Prototype export action for demo purposes.</p>
-        <button class="btn btn-green mt-10" onclick="fakeDownload()">Download Report</button>
+        <p class="text-muted mt-10">
+            This is a prototype export feature for demonstration purposes.
+        </p>
+
+        <button class="btn btn-green mt-10" onclick="fakeDownload()">
+            Download {{ format }} Report
+        </button>
     </div>
 
 </div>
 
+<!-- FAKE DOWNLOAD -->
 <script>
 function fakeDownload() {
-    alert("This is a demo only, so pretend the selected report was downloaded successfully :)");
+    alert("This is a prototype demo pretend your {{ format }} report just downloaded successfully :)");
 }
 </script>
 

@@ -43,13 +43,13 @@ def admin_dashboard_page():
 
 @app.route('/admin/report-preview')
 def admin_report_preview_page():
-    return render_template('admin-report-preview.html')
+    # get values chosen in the admin dashboard form
+    period = request.args.get('period', 'semester')
+    format_type = request.args.get('format', 'pdf')
+    report_type = request.args.get('type', 'summary')
 
-@app.route('/admin/report', methods=['GET'])
-def generate_admin_report():
     # fake/demo data for prototype
     report_data = {
-        'success': True,
         'average_mood': 6.4,
         'active_students': 132,
         'check_ins': 320,
@@ -57,7 +57,13 @@ def generate_admin_report():
         'stress_periods': ['Midterm Week', 'Final Exam Period']
     }
 
-    return jsonify(report_data), 200
+    return render_template(
+        'admin-report-preview.html',
+        period=period,
+        format=format_type,
+        report_type=report_type,
+        report=report_data
+    )
 
 @app.route('/api/mood-entries', methods=['POST'])
 def log_mood():

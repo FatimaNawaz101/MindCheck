@@ -205,31 +205,31 @@
         </p>
 
         <!-- simple prototype form -->
-        <!-- not actually connected to backend yet -->
-        <form style="margin-top: 15px;">
+        <!-- now connected to backend using GET -->
+        <form action="/admin/report-preview" method="GET" style="margin-top: 15px;">
 
             <label for="period">Reporting Period</label>
-            <select id="period">
-                <option>Last 7 Days</option>
-                <option>Last 30 Days</option>
-                <option selected>This Semester</option>
-                <option>This Academic Year</option>
+            <select name="period" id="period">
+                <option value="7days">Last 7 Days</option>
+                <option value="30days">Last 30 Days</option>
+                <option value="semester" selected>This Semester</option>
+                <option value="year">This Academic Year</option>
             </select>
 
             <label for="format">Export Format</label>
-            <select id="format">
-                <option selected>PDF</option>
-                <option>Excel</option>
+            <select name="format" id="format">
+                <option value="pdf" selected>PDF</option>
+                <option value="excel">Excel</option>
             </select>
 
             <label for="report-type">Report Type</label>
-            <select id="report-type">
-                <option selected>Campus Wellness Summary</option>
-                <option>Trend Analysis Report</option>
-                <option>Usage Metrics Report</option>
+            <select name="type" id="report-type">
+                <option value="summary" selected>Campus Wellness Summary</option>
+                <option value="trend">Trend Analysis Report</option>
+                <option value="usage">Usage Metrics Report</option>
             </select>
 
-            <a href="/admin/report-preview" class="btn btn-green">Generate Report</a>
+            <button type="submit" class="btn btn-green">Generate Report</button>
 
         </form>
 
