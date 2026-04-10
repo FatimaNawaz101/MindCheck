@@ -42,11 +42,17 @@ class MoodTrackingService:
     
      # count consecutive days with low mood (rating below 4)
     def detect_low_mood_pattern(self, entries):
+        #check if there are enough entries
+        if len(entries) < 4:
+            return False
+        #check if the most recententry is low, if its not pattern of low moods breaks
+        if not entries[0].is_low_mood():
+            return False
         consecutive_low = 0
         for entry in entries:
             if entry.is_low_mood():
                 consecutive_low = consecutive_low + 1
-                if consecutive_low >= 5:
+                if consecutive_low >= 4:
                     return True
             else:
                 consecutive_low = 0
