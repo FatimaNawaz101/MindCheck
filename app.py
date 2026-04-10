@@ -41,6 +41,10 @@ def admin_login_page():
 def admin_dashboard_page():
     return render_template('admin-dashboard.html')
 
+@app.route('/admin/report-preview')
+def admin_report_preview_page():
+    return render_template('admin-report-preview.html')
+
 @app.route('/admin/report', methods=['GET'])
 def generate_admin_report():
     # fake/demo data for prototype

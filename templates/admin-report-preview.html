@@ -1,0 +1,117 @@
+<!--Admin report preview part by Nick Mesti-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Report Preview</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/">User Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+        <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+    </ul>
+    <span class="user">Hello, Wellness Coordinator</span>
+</nav>
+
+<div class="container">
+
+    <!-- Page heading -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h1>Wellness Report Preview</h1>
+            <p class="subtitle">Preview of the generated administrative wellness report.</p>
+        </div>
+        <a href="/admin/dashboard" class="btn btn-outline">Back to Dashboard</a>
+    </div>
+
+    <!-- Report details -->
+    <div class="card">
+        <h2>Report Details</h2>
+        <p class="text-muted mt-10">This is a prototype preview using aggregated demo data.</p>
+
+        <table style="margin-top: 10px;">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Reporting Period</td>
+                <td>This Semester</td>
+            </tr>
+            <tr>
+                <td>Report Type</td>
+                <td>Campus Wellness Summary</td>
+            </tr>
+            <tr>
+                <td>Export Format</td>
+                <td>PDF</td>
+            </tr>
+            <tr>
+                <td>Generated On</td>
+                <td>March 2026</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="two-col">
+        <div class="stat-box">
+            <div class="label">Average Campus Mood</div>
+            <div class="number">6.4</div>
+            <div class="note">Based on aggregated student check-ins</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="label">Active Students</div>
+            <div class="number">132</div>
+            <div class="note">Students active this reporting period</div>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="stat-box">
+            <div class="label">Mood Entries</div>
+            <div class="number">320</div>
+            <div class="note">Total submitted check-ins</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="label">Appointment Requests</div>
+            <div class="number">18</div>
+            <div class="note">Counseling requests during this period</div>
+        </div>
+    </div>
+
+    <!-- Stress periods -->
+    <div class="card">
+        <h2>Peak Stress Periods</h2>
+        <ul style="padding-left: 20px; line-height: 1.8;">
+            <li>Midterm Week</li>
+            <li>Final Exam Period</li>
+        </ul>
+    </div>
+
+    <!-- Export button -->
+    <div class="card text-center">
+        <h2>Export Report</h2>
+        <p class="text-muted mt-10">Prototype export action for demo purposes.</p>
+        <button class="btn btn-green mt-10" onclick="fakeDownload()">Download Report</button>
+    </div>
+
+</div>
+
+<script>
+function fakeDownload() {
+    alert("This is a demo only, so pretend the selected report was downloaded successfully :)");
+}
+</script>
+
+</body>
+</html>
