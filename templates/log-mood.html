@@ -88,10 +88,8 @@
             document.getElementById('errorMsg').style.display = 'block';
             return;
         }
-
         // get notes
         var notes = document.getElementById('notes').value;
-
         // send to backend API
         fetch('http://localhost:5000/api/mood-entries', {
             method: 'POST',
