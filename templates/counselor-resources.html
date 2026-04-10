@@ -1,0 +1,95 @@
+<!-- Counselor module by Sheldon Gonsalves -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Manage Resources</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/counselor/dashboard" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/counselor/dashboard">Dashboard</a></li>
+        <li><a href="/counselor/appointments">Appointments</a></li>
+        <li><a href="/counselor/resources">Resources</a></li>
+    </ul>
+    <span class="user">{{ counselor_name }}</span>
+</nav>
+
+<div class="container">
+
+    <h1>Manage Resources</h1>
+    <p class="subtitle">Add, edit, and publish wellness resources for students</p>
+
+    <hr class="divider">
+
+    <h2 style="margin-bottom: 15px;">Published Resources</h2>
+
+    {% for res in live_resources %}
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p><strong>{{ res.title }}</strong></p>
+                <p class="text-muted" style="margin-top: 5px;">Category: {{ res.category }}</p>
+            </div>
+            <span class="badge badge-green">Live</span>
+        </div>
+        <p class="text-muted" style="margin-top: 10px;">{{ res.description }}</p>
+        <div style="display: flex; gap: 10px; margin-top: 12px;">
+            <form method="POST" action="/counselor/resources/unpublish/{{ res.id }}">
+                <button type="submit" class="btn btn-gray">Unpublish</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-muted">No published resources yet.</p>
+    {% endfor %}
+
+    <hr class="divider">
+
+    <h2 style="margin-bottom: 15px;">Add New Resource</h2>
+
+    <div class="card">
+
+        <form method="POST" action="/counselor/resources/add">
+
+            <label for="res-title">Resource Title</label>
+            <input type="text" id="res-title" name="title" placeholder="e.g. Coping with Exam Anxiety" required>
+
+            <label for="res-cat">Category</label>
+            <select id="res-cat" name="category">
+                <option>Stress</option>
+                <option>Anxiety</option>
+                <option>Sleep</option>
+                <option>Crisis Support</option>
+                <option>General Wellness</option>
+            </select>
+
+            <label for="res-desc">Description</label>
+            <textarea id="res-desc" name="description" placeholder="Brief description of this resource for students..."></textarea>
+
+            <label for="res-link">External Link (optional)</label>
+            <input type="url" id="res-link" name="link" placeholder="https://...">
+
+            <div class="alert alert-blue" style="margin-top: 15px;">
+                Resources will be visible to all students once published.
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 5px;">
+                <button type="submit" name="action" value="draft" class="btn btn-gray" style="flex: 1;">Save as Draft</button>
+                <button type="submit" name="action" value="publish" class="btn btn-green" style="flex: 2;">Publish Resource</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <a href="/counselor/dashboard" class="btn btn-gray" style="margin-top: 10px;">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

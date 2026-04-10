@@ -1,0 +1,115 @@
+<!-- Counselor module by Sheldon Gonsalves -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Counselor Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/counselor/dashboard" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/counselor/dashboard">Dashboard</a></li>
+        <li><a href="/counselor/appointments">Appointments</a></li>
+        <li><a href="/counselor/resources">Resources</a></li>
+    </ul>
+    <span class="user">{{ counselor_name }}</span>
+</nav>
+
+<div class="container">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h1>Counselor Dashboard</h1>
+            <p class="subtitle">Campus wellness overview — Week of March 9, 2026</p>
+        </div>
+        <a href="/counselor/appointments" class="btn btn-green">Manage Appointments</a>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="two-col">
+        <div class="stat-box">
+            <div class="label">Campus Avg Mood</div>
+            <div class="number">{{ overall_avg }}</div>
+            <div class="note">↓ 0.4 from last week</div>
+        </div>
+        <div class="stat-box">
+            <div class="label">Pending Requests</div>
+            <div class="number">{{ pending_count }}</div>
+            <div class="note">Appointments to review</div>
+        </div>
+    </div>
+
+    <!-- Mood This Week -->
+    <div class="card">
+        <h2>Campus Mood This Week</h2>
+        <table style="margin-top: 10px;">
+            <tr>
+                <th>Day</th>
+                <th>Avg Mood</th>
+                <th>Visual</th>
+            </tr>
+            {% for row in mood_data %}
+            <tr>
+                <td>{{ row.day }}</td>
+                <td>{{ row.avg }}</td>
+                <td>
+                    <div style="width: {{ (row.avg / 10 * 100) | int }}%; height: 12px; background: {% if row.avg >= 6.0 %}#2d6a4f{% else %}#e8a020{% endif %}; border-radius: 4px;"></div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="alert alert-yellow" style="margin-top: 15px;">
+            Mid-week dip detected — possible exam or deadline stress pattern.
+        </div>
+    </div>
+
+    <!-- At-Risk Students -->
+    <h2 style="margin-bottom: 15px;">At-Risk Students</h2>
+    <div class="alert alert-blue">
+        Students with a mood of 3.2 or below for 3+ consecutive days. Identities are anonymized.
+    </div>
+
+    {% for student in at_risk %}
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p><strong>Student {{ student.student_anon_id }}</strong></p>
+                <p class="text-muted" style="margin-top: 5px;">Avg mood: {{ student.avg_mood }} — {{ student.days }} consecutive low days</p>
+            </div>
+            <span class="badge badge-red">High Risk</span>
+        </div>
+    </div>
+    {% endfor %}
+
+    <hr class="divider">
+
+    <!-- Today's Appointments -->
+    <h2 style="margin-bottom: 15px;">Today's Appointments</h2>
+
+    {% for appt in todays_appts %}
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p><strong>{{ appt.student_name }} — Session #{{ appt.session_number }}</strong></p>
+                <p class="text-muted" style="margin-top: 5px;">{{ appt.appt_time }}</p>
+            </div>
+            <span class="badge badge-green">Confirmed</span>
+        </div>
+        <p class="text-muted" style="margin-top: 10px;">Concern: {{ appt.concern }}</p>
+    </div>
+    {% endfor %}
+
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <a href="/counselor/appointments" class="btn btn-gray">View All Appointments</a>
+        <a href="/counselor/resources" class="btn btn-gray">Manage Resources</a>
+        <a href="/counselor/logout" class="btn btn-gray">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>

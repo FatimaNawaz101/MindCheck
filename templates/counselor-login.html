@@ -1,0 +1,46 @@
+<!-- Counselor module by Sheldon Gonsalves -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Counselor Login</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+</nav>
+
+<div class="container">
+
+    <div class="card" style="max-width: 420px; margin: auto;">
+
+        <h2 class="text-center">Counselor Login</h2>
+        <p class="text-muted text-center mb-10">Campus counselor access only</p>
+
+        {% if error %}
+        <div class="alert alert-yellow">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/counselor/login">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="counselor@university.edu" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button class="btn btn-green" style="width: 100%; margin-top: 10px;">Login</button>
+        </form>
+
+        <p class="text-muted text-center" style="margin-top: 15px; font-size: 13px;">
+            Demo: sheldon@mindcheck.edu / counselor123
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
