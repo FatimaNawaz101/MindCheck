@@ -1,0 +1,101 @@
+<!--Student part by Fatima Nawaz-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Appointments</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+    </ul>
+    <span class="user">Hello, Fatima</span>
+</nav>
+
+<div class="container">
+
+    <h1>Appointments</h1>
+    <p class="subtitle">Request and manage your counseling sessions</p>
+
+    <h2 style="margin-bottom: 15px;">Your Appointments</h2>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p><strong>Session with Dr. Rabika Syed</strong></p>
+                <p class="text-muted" style="margin-top: 5px;">Wednesday, March 11, 2026 - 2:00 PM</p>
+            </div>
+            <span class="badge badge-green">Confirmed</span>
+        </div>
+        <p class="text-muted" style="margin-top: 10px;">Concern: Feeling overwhelmed with coursework.</p>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p><strong>Session with Dr. Anya Ali</strong></p>
+                <p class="text-muted" style="margin-top: 5px;">Friday, March 13, 2026 - 10:30 AM</p>
+            </div>
+            <span class="badge badge-yellow">Pending</span>
+        </div>
+        <p class="text-muted" style="margin-top: 10px;">Concern: General wellness check-in.</p>
+    </div>
+
+    <hr class="divider">
+
+    <h2 style="margin-bottom: 15px;">Request a New Appointment</h2>
+
+    <div class="card">
+
+        <label for="counselor">Preferred Counselor</label>
+        <select id="counselor">
+            <option>Any available counselor</option>
+            <option>Dr. Rabika Syed</option>
+            <option>Dr. Anya Ali Hamza</option>
+            <option>Dr. Alyse Nishimura</option>
+        </select>
+
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date">
+
+        <label for="time">Preferred Time</label>
+        <select id="time">
+            <option>9:00 AM</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>1:00 PM</option>
+            <option>2:00 PM</option>
+            <option>3:00 PM</option>
+        </select>
+
+        <label for="concern">Description of Concern</label>
+        <textarea id="concern" placeholder="Briefly describe what you would like to discuss..."></textarea>
+
+        <div class="alert alert-blue">
+            Your information is kept confidential in accordance with FERPA regulations.
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <a href="/" class="btn btn-gray" style="flex: 1; text-align: center;">Cancel</a>
+            <button class="btn btn-green" style="flex: 2;" onclick="submitRequest()">Submit Request</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function submitRequest() {
+        alert('Your appointment request has been submitted. You will receive an email confirmation shortly.');
+    }
+</script>
+
+</body>
+</html>

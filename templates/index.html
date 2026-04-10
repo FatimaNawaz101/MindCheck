@@ -1,0 +1,102 @@
+<!--Student part by Fatima Nawaz-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+    </ul>
+    <span class="user">Hello, Fatima</span>
+</nav>
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h1>Welcome back, Fatima</h1>
+            <p class="subtitle">How are you feeling today?</p>
+        </div>
+        <a href="/log-mood" class="btn btn-green">+ Log Today's Mood</a>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="two-col">
+        <div class="stat-box">
+            <div class="label">Today's Mood</div>
+            <div class="number">7</div>
+            <div class="note">Logged at 9:15 AM</div>
+        </div>
+        <div class="stat-box">
+            <div class="label">Weekly Average</div>
+            <div class="number">6.4</div>
+            <div class="note">Based on last 7 entries</div>
+        </div>
+    </div>
+
+    <!-- Mood This Week -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>My Mood This Week</h2>
+            <a href="/log-mood" class="btn btn-outline">Log Today</a>
+        </div>
+        <p class="text-muted" style="margin-top: 10px;">Your mood ratings for this week:</p>
+        <table style="margin-top: 10px;">
+            <tr>
+                <th>Day</th>
+                <th>Mood</th>
+                <th>Visual</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>6</td>
+                <td><div style="width: 60%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>7</td>
+                <td><div style="width: 70%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>5</td>
+                <td><div style="width: 50%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>8</td>
+                <td><div style="width: 80%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>7</td>
+                <td><div style="width: 70%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Info Alert -->
+    <div class="alert alert-blue">
+        Your mood has been above average this week. Check out our wellness resources for helpful tips!
+    </div>
+
+    <!-- Quick Actions -->
+    <h2>Quick Actions</h2>
+    <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+        <a href="/resources" class="btn btn-gray">Browse Resources</a>
+        <a href="/appointments" class="btn btn-gray">Request Appointment</a>
+        <a href="/log-mood" class="btn btn-gray">Log Mood</a>
+    </div>
+
+</div>
+
+</body>
+</html>

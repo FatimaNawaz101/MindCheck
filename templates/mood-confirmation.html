@@ -1,0 +1,87 @@
+<!--Student part by Fatima Nawaz-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck - Mood Logged</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+    </ul>
+    <span class="user">Hello, Fatima</span>
+</nav>
+
+<div class="container" style="max-width: 560px;">
+
+    <div class="card text-center">
+
+        <p style="font-size: 40px;">✓</p>
+        <h1 style="margin-top: 10px;">Mood Logged Successfully!</h1>
+        <p class="subtitle mt-10">Your mood entry has been saved for today.</p>
+
+        <hr class="divider">
+
+        <div class="stat-box" style="background: #d8f3dc; border: 1px solid #52b788;">
+            <div class="label">Today's Mood Rating</div>
+            <div class="number" id="moodNum">7</div>
+            <div class="note" id="moodDate">Monday, March 9, 2026 - 10:30 AM</div>
+        </div>
+
+        <div style="background: #f9f9f9; border-radius: 6px; padding: 15px; margin-top: 15px; text-align: left;" id="notesSection">
+            <p class="text-muted mb-10">Journal Notes:</p>
+            <p style="font-size: 14px;" id="notesText">No notes added.</p>
+        </div>
+
+        <div class="alert alert-yellow mt-10" id="lowMoodMsg" style="display: none; text-align: left;">
+            Your mood has been low recently. Consider speaking with a counselor for support.
+            <br><br>
+            <a href="/appointments" class="btn btn-green" style="font-size: 13px; padding: 8px 16px;">Request Appointment</a>
+        </div>
+
+        <hr class="divider">
+
+        <div style="display: flex; gap: 10px;">
+            <a href="/" class="btn btn-outline" style="flex: 1; text-align: center;">Back to Dashboard</a>
+            <a href="/appointments" class="btn btn-green" style="flex: 1; text-align: center;">Request Appointment</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // get URL parameters
+    var params = new URLSearchParams(window.location.search);
+    var mood = params.get('mood') || '7';
+    var alert = params.get('alert');
+
+    // display mood rating
+    document.getElementById('moodNum').textContent = mood;
+
+    // show counseling alert if backend detected pattern
+    if (alert === 'true') {
+        document.getElementById('lowMoodMsg').style.display = 'block';
+    }
+
+    // update date to current date
+    var now = new Date();
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+    document.getElementById('moodDate').textContent = now.toLocaleDateString('en-US', options);
+
+    // display notes if provided
+    var notes = params.get('notes');
+    if (notes && notes.trim() !== '') {
+        document.getElementById('notesText').textContent = notes;
+    }
+</script>
+
+</body>
+</html>
