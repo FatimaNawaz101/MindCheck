@@ -1,5 +1,5 @@
 from database import get_connection
-from mood_entry import MoodEntry
+from student_wellness.mood_entry import MoodEntry
 
 class MoodRepository:
     #Saves mood entry to database

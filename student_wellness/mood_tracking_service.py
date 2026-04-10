@@ -1,5 +1,5 @@
-from mood_entry import MoodEntry
-from mood_repository import MoodRepository
+from student_wellness.mood_entry import MoodEntry
+from student_wellness.mood_repository import MoodRepository
 
 class MoodTrackingService:
     def __init__(self):
