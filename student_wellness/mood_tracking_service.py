@@ -9,7 +9,6 @@ class MoodTrackingService:
         #Step 1:check if rating exists
         if not rating:
             return "Rating is required"
-        
         #Step 2: check if rating is in valid range
         if rating < 1 or rating > 10:
             return "Rating must be between 1 and 10"
@@ -45,7 +44,7 @@ class MoodTrackingService:
         #check if there are enough entries
         if len(entries) < 4:
             return False
-        #check if the most recententry is low, if its not pattern of low moods breaks
+        #check if the most recententry is low,if its not pattern of low moods breaks
         if not entries[0].is_low_mood():
             return False
         consecutive_low = 0

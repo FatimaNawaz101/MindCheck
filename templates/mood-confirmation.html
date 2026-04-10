@@ -65,17 +65,14 @@
 
     // display mood rating
     document.getElementById('moodNum').textContent = mood;
-
     // show counseling alert if backend detected pattern
     if (alert === 'true') {
         document.getElementById('lowMoodMsg').style.display = 'block';
     }
-
     // update date to current date
     var now = new Date();
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
     document.getElementById('moodDate').textContent = now.toLocaleDateString('en-US', options);
-
     // display notes if provided
     var notes = params.get('notes');
     if (notes && notes.trim() !== '') {
