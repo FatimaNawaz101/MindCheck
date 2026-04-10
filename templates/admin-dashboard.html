@@ -1,0 +1,247 @@
+<!--Admin part by Nick Mesti-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- basic responsive setup -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- page title -->
+    <title>MindCheck - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<!-- Top navigation bar -->
+<nav>
+    <a href="/" class="logo">MindCheck</a>
+
+    <ul>
+        <li><a href="/">User Dashboard</a></li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+    </ul>
+
+    <!-- placeholder user for the demo -->
+    <span class="user">Hello, Wellness Coordinator</span>
+</nav>
+<div class="container">
+
+<!-- Page header / intro section -->
+<!-- just gives context about what this dashboard is for -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h1>Campus Wellness Overview</h1>
+            <p class="subtitle">Monitor wellness trends and generate campus reports.</p>
+        </div>
+
+        <!-- quick shortcut to report generation -->
+        <a href="#report-section" class="btn btn-green">Generate Report</a>
+    </div>
+
+<!-- STAT SUMMARY SECTION -->
+<!-- quick numbers the coordinator would want to see right away -->
+    <div class="two-col">
+
+        <div class="stat-box">
+            <div class="label">Average Campus Mood</div>
+            <div class="number">6.4</div>
+            <div class="note">Based on this week's check-ins</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="label">Active Students</div>
+            <div class="number">132</div>
+            <div class="note">Logged at least one mood entry this week</div>
+        </div>
+
+    </div>
+
+    <!-- more usage related stats -->
+    <div class="two-col">
+
+        <div class="stat-box">
+            <div class="label">Mood Entries</div>
+            <div class="number">320</div>
+            <div class="note">Total submissions this week</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="label">Counseling Requests</div>
+            <div class="number">18</div>
+            <div class="note">Appointment requests this week</div>
+        </div>
+
+    </div>
+
+<!-- MOOD TREND SECTION -->
+<!-- simple visual trend using bars (placeholder instead of real chart library) -->
+    <div class="card">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Campus Mood Trend</h2>
+            <span class="badge badge-green">Stable</span>
+        </div>
+
+        <p class="text-muted mt-10">Average campus mood score across the last 5 weeks</p>
+
+        <!-- using a table just to mock up the trend quickly -->
+        <table style="margin-top: 10px;">
+            <tr>
+                <th>Week</th>
+                <th>Average Mood</th>
+                <th>Visual</th>
+            </tr>
+
+            <tr>
+                <td>Week 1</td>
+                <td>7.1</td>
+                <td><div style="width: 71%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+
+            <tr>
+                <td>Week 2</td>
+                <td>6.8</td>
+                <td><div style="width: 68%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+
+            <tr>
+                <td>Week 3</td>
+                <td>6.2</td>
+                <td><div style="width: 62%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+
+            <tr>
+                <td>Week 4</td>
+                <td>5.8</td>
+                <td><div style="width: 58%; height: 12px; background: #d97706; border-radius: 4px;"></div></td>
+            </tr>
+
+            <tr>
+                <td>Week 5</td>
+                <td>6.4</td>
+                <td><div style="width: 64%; height: 12px; background: #2d6a4f; border-radius: 4px;"></div></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+<!-- PEAK STRESS PERIODS -->
+<!-- this ties into the "Identify Peak Stress Periods" use case -->
+    <div class="card">
+
+        <h2>Peak Stress Periods</h2>
+        <p class="text-muted mt-10">
+            Periods where aggregated mood trends dropped below the normal range
+        </p>
+
+        <table style="margin-top: 10px;">
+            <tr>
+                <th>Period</th>
+                <th>Status</th>
+                <th>Notes</th>
+            </tr>
+
+            <tr>
+                <td>Midterm Week</td>
+                <td><span class="badge badge-yellow">High Stress</span></td>
+                <td>Noticeable drop in average mood and increased appointment requests</td>
+            </tr>
+
+            <tr>
+                <td>Final Exam Period</td>
+                <td><span class="badge badge-yellow">High Stress</span></td>
+                <td>Highest check-in volume and lower-than-average mood ratings</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+<!-- USAGE METRICS -->
+<!-- system engagement stats -->
+    <div class="card">
+
+        <h2>Usage Metrics</h2>
+        <p class="text-muted mt-10">
+            System engagement across student wellness features
+        </p>
+
+        <div class="two-col" style="margin-top: 15px;">
+
+            <div class="alert alert-blue">
+                <strong>Resource Views:</strong> 214 this week
+            </div>
+
+            <div class="alert alert-blue">
+                <strong>Daily Check-ins:</strong> 320 this week
+            </div>
+
+            <div class="alert alert-blue">
+                <strong>Appointment Requests:</strong> 18 this week
+            </div>
+
+            <div class="alert alert-blue">
+                <strong>Most Accessed Resource:</strong> Exam Stress Toolkit
+            </div>
+
+        </div>
+
+    </div>
+
+
+<!-- REPORT GENERATION SECTION -->
+<!-- this connects to the "Generate Wellness Report" use case -->
+    <div class="card" id="report-section">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Generate Wellness Report</h2>
+            <span class="badge badge-green">Ready</span>
+        </div>
+
+        <p class="text-muted mt-10">
+            Create an administrative summary report using aggregated campus data.
+        </p>
+
+        <!-- simple prototype form -->
+        <!-- not actually connected to backend yet -->
+        <form style="margin-top: 15px;">
+
+            <label for="period">Reporting Period</label>
+            <select id="period">
+                <option>Last 7 Days</option>
+                <option>Last 30 Days</option>
+                <option selected>This Semester</option>
+                <option>This Academic Year</option>
+            </select>
+
+            <label for="format">Export Format</label>
+            <select id="format">
+                <option selected>PDF</option>
+                <option>Excel</option>
+            </select>
+
+            <label for="report-type">Report Type</label>
+            <select id="report-type">
+                <option selected>Campus Wellness Summary</option>
+                <option>Trend Analysis Report</option>
+                <option>Usage Metrics Report</option>
+            </select>
+
+            <a href="/admin/report" class="btn btn-green">Generate Report</a>
+
+        </form>
+
+        <!-- info message about report contents -->
+        <div class="alert alert-green mt-10">
+            Report will include aggregated wellness trends, usage metrics, and peak stress indicators.
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

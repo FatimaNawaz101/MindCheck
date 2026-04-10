@@ -33,6 +33,28 @@ def resources_page():
 def appointments_page():
     return render_template('appointments.html')
 
+@app.route('/admin')
+def admin_login_page():
+    return render_template('admin-login.html')
+
+@app.route('/admin/dashboard')
+def admin_dashboard_page():
+    return render_template('admin-dashboard.html')
+
+@app.route('/admin/report', methods=['GET'])
+def generate_admin_report():
+    # fake/demo data for prototype
+    report_data = {
+        'success': True,
+        'average_mood': 6.4,
+        'active_students': 132,
+        'check_ins': 320,
+        'appointment_requests': 18,
+        'stress_periods': ['Midterm Week', 'Final Exam Period']
+    }
+
+    return jsonify(report_data), 200
+
 @app.route('/api/mood-entries', methods=['POST'])
 def log_mood():
     # get data from request

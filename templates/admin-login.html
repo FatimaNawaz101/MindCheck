@@ -1,0 +1,47 @@
+<!--Admin part by Nick Mesti-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindCheck Admin Login</title>
+<link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<nav>
+<a href="/" class="logo">MindCheck</a>
+</nav>
+
+<!-- Prototype / fake admin authentication page for role-based access -->
+<div class="container">
+
+<div class="card" style="max-width:400px;margin:auto;">
+
+<h2 class="text-center">Admin Access</h2>
+<p class="text-muted text-center mb-10">
+Wellness Coordinator Login
+</p>
+
+<label>Email</label>
+<input type="email" placeholder="admin@sheridan.ca">
+
+<label>Password</label>
+<input type="password" placeholder="password">
+
+<button class="btn btn-green" style="width:100%" onclick="login()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+// demo login redirect
+function login(){
+    window.location.href = "/admin/dashboard";
+}
+
+</script>
+
+</body>
