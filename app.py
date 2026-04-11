@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 from flask_cors import CORS
 from database import init_database
 from student_wellness.mood_tracking_service import MoodTrackingService
-from student_wellness.counselor_service import CounselorService
+from counselor_service import CounselorService
 
 app = Flask(__name__)
 app.secret_key = 'mindcheck-dev-key'
@@ -67,15 +67,17 @@ def admin_report_preview_page():
         report=report_data
     )
 
-# ─── Mood API Routes ──────────────────────────────────────────────────────────
-
+#Log Mood Routes(Fatima Nawaz)
 @app.route('/api/mood-entries', methods=['POST'])
 def log_mood():
+    # get data from request
     data = request.json
     student_id = data.get('student_id')
     rating = data.get('rating')
-    notes = data.get('notes', '')
+    notes = data.get('notes', '') #try to get notes from data but if student doesnt pass anything then set it to empty string
+    # save mood entry using service
     result = mood_service.save_mood_entry(student_id, rating, notes)
+    #convert python dictionary to JSON format then check status code
     if result['success']:
         return jsonify(result), 200
     else:
@@ -83,7 +85,9 @@ def log_mood():
 
 @app.route('/api/mood-history/<int:student_id>', methods=['GET'])
 def get_history(student_id):
+     # get all entries for this student
     entries = mood_service.get_mood_history(student_id)
+     # convert to dictionaries for JSON
     entry_data = [e.to_dict() for e in entries]
     return jsonify({'success': True, 'entries': entry_data}), 200
 
